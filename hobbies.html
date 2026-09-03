@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <nav>
+
+    <a href="index.html">Home</a>
+
+    <a href="aboutme.html">About Me</a>
+
+    <a href="family.html">Family</a>
+
+    <a href="hobbies.html">Hobbies</a>
+
+    <a href="gallery.html">Gallery</a>
+
+    <a href="contact.html">Contact</a>
+
+        </nav>
+
+       
+
+    </header>
+    
+    <main>
+
+    <h2>My Hobbies</h2>
+    
+    <div class="hobby-container">
+
+    <section class="hobby">
+    <h3>🎵 Listening to Music</h3>
+
+    <img class="hobby-image" src="Images/Music.png" alt="Listening to Music">
+
+    <p>
+        Listening to music is one of my favourite ways to relax and enjoy my free time.
+        Music helps me feel refreshed and allows me to enjoy different sounds and styles.
+    </p>
+    
+</section>
+    <section class="hobby">
+    <h3>💻 Coding</h3>
+
+    <img class="hobby-image" src="Images/Coding.png" alt="Coding">
+
+    <p>
+        Coding is one of my main interests because I enjoy creating things and solving
+        problems using technology. I especially enjoy learning programming and developing
+        applications.
+    </p>
+    
+</section>
+
+    <section class="hobby">
+    <h3>🍳 Cooking</h3>
+
+    <img class="hobby-image" src="Images/Cooking.png" alt="Cooking">
+
+    <p>
+        I also enjoy cooking in my free time. Cooking allows me to be creative and
+        experiment with different meals and flavours.
+    </p>
+</section>
+    </div>
+    <section class="music-section">
+
+    <h2>🎵 My Music</h2>
+
+    <div class="music-player">
+
+        <h3 id="song-title">Izinkinga Zami</h3>
+
+        <audio id="audio-player" controls>
+            <source src="Music/Izinkinga Zami.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="music-buttons">
+            <button onclick="previousSong()">⏮ Previous</button>
+            <button onclick="nextSong()">Next ⏭</button>
+        </div>
+
+    </div>
+
+    <div class="song-list">
+
+        <button onclick="playSong(0)">🎵 Izinkinga Zami</button>
+
+        <button onclick="playSong(1)">🎵 Kushoda Obaba</button>
+
+        <button onclick="playSong(2)">🎵 Number 10</button>
+
+        <button onclick="playSong(3)">🎵 Tough Time</button>
+
+    </div>
+
+</section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nelisa Dumisa</p>
+
+    
+
+
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+
+const songs = [
+    {
+        title: "Izinkinga Zami",
+        file: "Music/Izinkinga Zami.mp3"
+    },
+    {
+        title: "Kushoda Obaba",
+        file: "Music/Kushoda Obaba.mp3"
+    },
+    {
+        title: "Number 10",
+        file: "Music/Number 10.mp3"
+    },
+    {
+        title: "Tough Time",
+        file: "Music/Tough Time.mp3"
+    }
+];
+
+let currentSong = 0;
+
+const audioPlayer = document.getElementById("audio-player");
+const songTitle = document.getElementById("song-title");
+
+function playSong(index) {
+
+    currentSong = index;
+
+    songTitle.textContent = songs[currentSong].title;
+
+    audioPlayer.src = songs[currentSong].file;
+
+    audioPlayer.play();
+
+}
+
+function nextSong() {
+
+    currentSong++;
+
+    if (currentSong >= songs.length) {
+        currentSong = 0;
+    }
+
+    playSong(currentSong);
+
+}
+
+function previousSong() {
+
+    currentSong--;
+
+    if (currentSong < 0) {
+        currentSong = songs.length - 1;
+    }
+
+    playSong(currentSong);
+
+}
+
+audioPlayer.addEventListener("ended", function() {
+    nextSong();
+});
+
+</script>
+</body>
+
+</html>
